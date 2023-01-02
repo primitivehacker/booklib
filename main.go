@@ -1,13 +1,16 @@
 package main
 
 import (
-	"flag"
+	"github.com/gin-gonic/gin"
 	"github.com/primitivehacker/booklib/api"
 )
 
 func main() {
-	listenAddr := flagString("listenaddr", ":3000", "the server address")
-
-	server := api.NewServer()
-	flag.Parse()
+	router := gin.Default()
+	router.GET("/books", api.GetAllBooks)
+	router.GET("/books/:id", api.BookById)
+	router.POST("/books", api.CreateBook)
+	router.PATCH("/checkout", api.CheckOutBook)
+	router.PATCH("/return", api.ReturnBook)
+	router.Run("localhost:8080")
 }
