@@ -2,8 +2,9 @@ package api
 
 import (
 	"errors"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Book struct {
@@ -14,22 +15,15 @@ type Book struct {
 	Isbn     string `json:"isbn"`
 }
 
-type Library struct {
-	books []Book
-}
-
-func DummyData() {
-	L := &Library{}
-	L.books = []Book{
-		{ID: "1", Title: "Title 1", Author: "Author 1", Quantity: 3},
-		{ID: "2", Title: "Title 2", Author: "Author 2", Quantity: 4},
-		{ID: "3", Title: "Title 3", Author: "Author 3", Quantity: 1},
-	}
+var books = []Book{
+	{ID: "1", Title: "Title 1", Author: "Author 1", Quantity: 3, Isbn: "asdf32345"},
+	{ID: "2", Title: "Title 2", Author: "Author 2", Quantity: 4, Isbn: "asdf23412"},
+	{ID: "3", Title: "Title 3", Author: "Author 3", Quantity: 1, Isbn: "qerwog342"},
 }
 
 // HANDLERS
-func (L *Library) GetAllBooks(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, DummyData)
+func GetAllBooks(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, books)
 }
 
 func BookById(c *gin.Context) {
