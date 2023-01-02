@@ -25,7 +25,7 @@ var books = []Book{
 }
 
 // HANDLERS
-func (l *Library) GetAllBooks(c *gin.Context) {
+func GetAllBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, books)
 }
 
