@@ -19,8 +19,8 @@ type Library struct {
 }
 
 func DummyData() {
-	l := &Library{}
-	l.books = []Book{
+	L := &Library{}
+	L.books = []Book{
 		{ID: "1", Title: "Title 1", Author: "Author 1", Quantity: 3},
 		{ID: "2", Title: "Title 2", Author: "Author 2", Quantity: 4},
 		{ID: "3", Title: "Title 3", Author: "Author 3", Quantity: 1},
@@ -28,7 +28,7 @@ func DummyData() {
 }
 
 // HANDLERS
-func (l *Library) GetAllBooks(c *gin.Context) {
+func (L *Library) GetAllBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, DummyData)
 }
 

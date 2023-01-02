@@ -7,7 +7,7 @@ import (
 
 func main() {
 	router := gin.Default()
-	router.GET("/books", api.GetAllBooks)
+	router.GET("/books", api.L.GetAllBooks)
 	router.GET("/books/:id", api.BookById)
 	router.POST("/books", api.CreateBook)
 	router.PATCH("/checkout", api.CheckOutBook)
